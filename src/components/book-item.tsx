@@ -1,6 +1,7 @@
-import { BookData } from "@/types";
+import type { BookData } from "@/types";
 import Link from "next/link";
-import styles from "./book-item.module.css";
+import style from "./book-item.module.css";
+
 export default function BookItem({
   id,
   title,
@@ -11,13 +12,13 @@ export default function BookItem({
   coverImgUrl,
 }: BookData) {
   return (
-    <Link href={`/book/${id}`} className={styles.container}>
+    <Link href={`/book/${id}`} className={style.container}>
       <img src={coverImgUrl} />
       <div>
-        <div className={styles.title}>{title}</div>
-        <div className={styles.subTitle}>{subTitle}</div>
+        <div className={style.title}>{title}</div>
+        <div className={style.subTitle}>{subTitle}</div>
         <br />
-        <div className={styles.author}>
+        <div className={style.author}>
           {author} | {publisher}
         </div>
       </div>
