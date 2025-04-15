@@ -4,6 +4,7 @@ import style from "./index.module.css";
 import { ReactNode } from "react";
 import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
+import { InferGetServerSidePropsType } from "next";
 export const getServerSideProps = async () => {
   // 컴포넌트보다 먼저 실행되어서 , 컴포넌트에 필요한 데이터를 불러오는 함수
 
@@ -15,7 +16,9 @@ export const getServerSideProps = async () => {
     },
   };
 };
-export default function Home({ data }: any) {
+export default function Home({
+  data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   console.log(data);
   return (
     <div className={style.container}>
