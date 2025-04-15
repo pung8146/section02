@@ -5,21 +5,20 @@ import { ReactNode } from "react";
 import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
 import { InferGetServerSidePropsType } from "next";
+import fetchBooks from "@/lib/fetch-books";
 export const getServerSideProps = async () => {
-  // 컴포넌트보다 먼저 실행되어서 , 컴포넌트에 필요한 데이터를 불러오는 함수
-
-  const data = "hello";
+  const allBooks = await fetchBooks();
 
   return {
     props: {
-      data,
+      allBooks,
     },
   };
 };
 export default function Home({
-  data,
+  allBooks,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  console.log(data);
+  console.log(allBooks);
   return (
     <div className={style.container}>
       <section>
